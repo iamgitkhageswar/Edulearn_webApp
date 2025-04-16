@@ -1,0 +1,85 @@
+<%- include('partials/header') %>
+
+<section class="hero">
+  <h1>Shaping the Future of Education</h1>
+  <p>World-class learning experiences with top educators and modern technology.</p>
+  <a href="/login" class="btn">Get Started</a>
+
+</section>
+
+<section id="about">
+  <h2 class="section-title">About Us</h2>
+  <p class="about-text">EduLearn Institute is a forward-thinking educational hub...</p>
+  <div class="event-grid">
+    <% const events = [
+      { title: "Cultural Fest", img: "photo-1514525253161-7a46d19cd819", desc: "Music, dance..." },
+      { title: "Annual Sports Meet", img: "photo-1721339040640-f77f46e902ed", desc: "Athletic excellence..." },
+      { title: "Tech Expo", img: "photo-1548884655-803db09fcbf6", desc: "Futuristic projects..." },
+      { title: "Workshops", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80", desc: "Hands-on sessions..." }
+    ]; %>
+    <% events.forEach(e => { %>
+      <div class="event-card">
+        <img src="<%= e.img.startsWith('http') ? e.img : `https://images.unsplash.com/${e.img}?q=80` %>" alt="<%= e.title %>">
+        <div class="event-card-content">
+          <h3><%= e.title %></h3>
+          <p><%= e.desc %></p>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</section>
+
+<section id="courses" class="container">
+  <h2 class="section-title">Feature Course</h2>
+  <div class="course-cards">
+    <% const courses = [
+      { title: "Web Development Bootcamp", desc: "Learn HTML, CSS...", btn: "Enroll Now" },
+      { title: "Data Science & AI", desc: "Master data analysis...", btn: "Start Learning" },
+      { title: "Digital Marketing Mastery", desc: "Explore SEO...", btn: "Join Today" }
+    ]; %>
+    <% courses.forEach(c => { %>
+      <div class="course-card">
+        <h3><%= c.title %></h3>
+        <p><%= c.desc %></p>
+        <a href="#" class="btn"><%= c.btn %></a>
+      </div>
+    <% }); %>
+  </div>
+</section>
+
+<section id="testimonials" class="container">
+  <h2 class="section-title">What Students Say</h2>
+  <div class="testimonials">
+    <div class="testimonial"><h3>Jane Doe</h3><p>"EduLearn changed my career..."</p></div>
+    <div class="testimonial"><h3>John Smith</h3><p>"The Data Science track was top-notch..."</p></div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Join EduLearn Today!</h2>
+  <a href="/login" class="btn">Get Started</a>
+</section>
+
+<section id="contact" class="container">
+  <div class="form-container">
+    <h2>Contact Us</h2>
+    <form action="/contact" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<script>
+  // Check for ?submitted=true in the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get("submitted") === "true") {
+    alert("✅ Message sent successfully!");
+    // Remove the query string so it doesn't alert again on refresh
+    window.history.replaceState(null, "", window.location.pathname);
+  }
+</script>
+
+<%- include('partials/footer') %>

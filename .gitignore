@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Optional: Ignore build artifacts if using any
+dist/
+build/
+
+# VS Code settings
+.vscode/
+
+# Docker files (optional, if you don’t want to commit local docker state)
+*.local
+docker-compose.override.yml
